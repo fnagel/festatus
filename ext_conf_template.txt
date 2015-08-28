@@ -1,0 +1,11 @@
+	# cat=basic; type=boolean; label=Check header status: Does not work reliable at the moment.
+check_header_status = 0
+
+# cat=basic; type=boolean; label=Check page unavailable force: check TYPO3 conf vars for pageUnavailable_force status
+check_page_unavailable_force = 1
+
+# cat=basic; type=boolean; label=Check dev ip mask: check TYPO3 conf vars for devIPmask status
+check_dev_ip_mask = 1
+
+# cat=basic; type=boolean; label=Check error display: check TYPO3 conf vars for displayErrors status
+check_display_errors = 1

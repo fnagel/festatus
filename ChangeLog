@@ -1,0 +1,48 @@
+2014-08-23 Felix Nagel  <info@felixnagel.com>
+
+	0.0.6 released (no changes required)
+	* fixed: CGL
+	* improved: TYPO3 6.2 compatible
+	* improved: update dependencies
+
+2013-03-11 Felix Nagel  <info@felixnagel.com>
+
+	0.0.5 released (no changes required)
+	* fixed: requirements as needed for planned TYPO3 TER cleanup
+
+2012-11-21 Felix Nagel  <info@felixnagel.com>
+
+	release: 0.0.4
+	* changed: extension status to beta
+	* changed: extension description
+	* improved: EM settings description
+
+2012-11-19 Felix Nagel  <info@felixnagel.com>
+
+	* changed: CGL
+	* improved: url generation for header check
+
+2012-02-24 Felix Nagel  <info@felixnagel.com>
+
+	* changed: better label in BE
+
+2011-09-05 Felix Nagel  <info@felixnagel.com>
+
+	* release: 0.0.3
+	* added: EM config to enable / disable single checks
+
+2011-08-31 Felix Nagel  <info@felixnagel.com>
+
+	* release: 0.0.2
+	* fixed: more reliable header status check
+	* added: icon from famfam, http://www.famfamfam.com/lab/icons/silk/
+	* added: dependency for TYPO3 4.3 (as reports module is needed)
+	* added: suggestion for scheduler extension
+
+2011-08-23 Felix Nagel  <info@felixnagel.com>
+
+	* first release, localization and documentation pending
+
+2011-08-21 Felix Nagel  <info@felixnagel.com>
+
+	* initial code generated with kickstarter
