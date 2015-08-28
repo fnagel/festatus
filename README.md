@@ -31,6 +31,7 @@ Please consider a donation: http://www.felixnagel.com/donate/
 ## ToDo
 
 * Test in TYPO3 6.2
+* Add deployment
 * Migrate docs to ReSt
 * Upgrade guide 
 	* nothing

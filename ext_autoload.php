@@ -1,7 +1,6 @@
 <?php
 
 return array(
-	'tx_festatus_checkfrontend' => t3lib_extMgm::extPath('festatus') . 'reports/class.tx_festatus_checkfrontend.php',
+	'TYPO3\\FrontendStatus\\Report\\CheckFrontendStatus' =>
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('festatus', 'Classes/Report/CheckFrontendStatus.php'),
 );
-
-?>

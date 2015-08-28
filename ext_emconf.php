@@ -14,27 +14,16 @@ $EM_CONF[$_EXTKEY] = array(
 	'title' => 'FE Status report',
 	'description' => 'Adds a simple check to the reports module to make sure your FE is available by checking FE header status and TYPO3 conf vars. Email reports via default scheduler task.',
 	'category' => 'misc',
-	'shy' => 0,
-	'version' => '1.0.0-dev',
-	'dependencies' => 'reports',
-	'conflicts' => '',
-	'priority' => '',
-	'loadOrder' => '',
-	'module' => '',
+	'version' => '0.1.0-dev',
 	'state' => 'beta',
 	'uploadfolder' => 0,
 	'createDirs' => '',
-	'modify_tables' => '',
 	'clearcacheonload' => 0,
-	'lockType' => '',
 	'author' => 'Felix Nagel',
 	'author_email' => 'info@felixnagel.com',
-	'author_company' => '',
-	'CGLcompliance' => '',
-	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '4.5.0-6.2.99',
+			'typo3' => '6.2.0-7.4.99',
 			'reports' => '',
 		),
 		'conflicts' => array(
@@ -45,5 +34,3 @@ $EM_CONF[$_EXTKEY] = array(
 	'suggests' => array(
 	),
 );
-
-?>
