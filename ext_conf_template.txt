@@ -1,4 +1,4 @@
-	# cat=basic; type=boolean; label=Check header status: Does not work reliable at the moment.
+	# cat=basic; type=boolean; label=Check header status: Unreliable, please test on your specific server
 check_header_status = 0
 
 # cat=basic; type=boolean; label=Check page unavailable force: check TYPO3 conf vars for pageUnavailable_force status
