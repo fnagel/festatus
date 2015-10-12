@@ -12,9 +12,9 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'FE Status report',
-	'description' => 'Adds a simple check to the reports module to make sure your FE is available by checking FE header status and TYPO3 conf vars. Email reports via default scheduler task.',
+	'description' => 'Add some frontend related checks to the reports module: check multiple TYPO3 conf vars and test header status. Email reports via default scheduler task.',
 	'category' => 'misc',
-	'version' => '0.1.0-dev',
+	'version' => '1.0.0-dev',
 	'state' => 'beta',
 	'uploadfolder' => 0,
 	'createDirs' => '',
@@ -26,11 +26,7 @@ $EM_CONF[$_EXTKEY] = array(
 			'typo3' => '6.2.0-7.5.99',
 			'reports' => '',
 		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
-	'suggests' => array(
+		'conflicts' => array(),
+		'suggests' => array(),
 	),
 );
