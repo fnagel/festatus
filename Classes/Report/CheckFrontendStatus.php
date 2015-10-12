@@ -58,8 +58,41 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 			$reports['checkDisplayErrors'] = $this->checkDisplayErrors();
 		}
 
+		if (version_compare(TYPO3_branch, '6.2', '>=')) {
+			if ($extConf['check_application_context']) {
+				$reports['checkApplicationContext'] = $this->checkApplicationContext();
+			}
+		}
+
 		return $reports;
 	}
+
+	/**
+	 * Check if website is online
+	 *
+	 * @return Status
+	 */
+	protected function checkApplicationContext() {
+		$title = 'Application context check';
+		$message = '';
+		$status = Status::OK;
+
+		$applicationContext = GeneralUtility::getApplicationContext();
+		if ($applicationContext->isProduction()) {
+			if ($applicationContext !== 'Production') {
+				$status = Status::INFO;
+			}
+		} else {
+			$value = 'Error';
+			$message = 'Application context is not a production context.';
+			$status = Status::ERROR;
+		}
+
+		$message .= ' Current context is "' . (string) $applicationContext . '"';
+
+		return new Status($title, $value, $message, $status);
+	}
+
 	/**
 	 * Check if website is online
 	 *

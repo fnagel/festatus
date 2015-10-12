@@ -9,3 +9,6 @@ check_dev_ip_mask = 1
 
 # cat=basic; type=boolean; label=Check error display: check TYPO3 conf vars for displayErrors status
 check_display_errors = 1
+
+# cat=basic; type=boolean; label=Application environment check: Make sure TYPO3 runs wit production settings (TYPO3 >= 6.2)
+check_application_context = 1
