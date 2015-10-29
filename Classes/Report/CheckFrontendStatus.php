@@ -73,7 +73,7 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 	 * @return Status
 	 */
 	protected function checkApplicationContext() {
-		$title = 'Application context check';
+		$title = 'Application context';
 		$message = '';
 		$status = Status::OK;
 
