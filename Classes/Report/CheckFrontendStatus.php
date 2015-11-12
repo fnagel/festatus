@@ -25,20 +25,40 @@ namespace TYPO3\FrontendStatus\Report;
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+use TYPO3\CMS\Reports\StatusProviderInterface;
+use TYPO3\CMS\Reports\ExtendedStatusProviderInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Reports\Status;
 
 /**
  * Hook into the backend module 'Reports'
  */
-class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface {
+class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProviderInterface {
+	/**
+	 * Compile environment status report
+	 *
+	 * @return \TYPO3\CMS\Reports\Status[]
+	 */
+	public function getStatus() {
+		return $this->getStatusInternal();
+	}
+
+	/**
+	 * Returns the detailed status of an extension or (sub)system
+	 *
+	 * @return \TYPO3\CMS\Reports\Status[]
+	 */
+	public function getDetailedStatus() {
+		return $this->getStatusInternal();
+	}
 
 	/**
 	 * Compiles a collection of system status checks as a status report.
 	 *
-	 * @see typo3/sysext/reports/interfaces/tx_reports_StatusProvider::getStatus()
+	 * @return \TYPO3\CMS\Reports\Status[]
+	 * @throws \TYPO3\CMS\Install\Exception
 	 */
-	public function getStatus() {
+	protected function getStatusInternal() {
 		$reports = array();
 		$extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['festatus']);
 
@@ -76,11 +96,13 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 		$title = 'Application context';
 		$message = '';
 		$status = Status::OK;
+		$value = 'Ok';
 
 		$applicationContext = GeneralUtility::getApplicationContext();
 		if ($applicationContext->isProduction()) {
 			if ($applicationContext !== 'Production') {
 				$status = Status::INFO;
+				$value = 'Info';
 			}
 		} else {
 			$value = 'Error';
@@ -90,7 +112,7 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 
 		$message .= ' Current context is "' . (string) $applicationContext . '"';
 
-		return new Status($title, $value, $message, $status);
+		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
 	}
 
 	/**
@@ -111,7 +133,7 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 			$status = Status::ERROR;
 		}
 
-		return new Status($title, $value, $message, $status);
+		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
 	}
 
 	/**
@@ -137,7 +159,7 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 			$value = 'Disabled';
 		}
 
-		return new Status($title, $value, $message, $status);
+		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
 	}
 
 	/**
@@ -163,7 +185,7 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 			$value = 'Ok';
 		}
 
-		return new Status($title, $value, $message, $status);
+		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
 	}
 
 	/**
@@ -184,7 +206,7 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 			$value = 'Disabled';
 		}
 
-		return new Status($title, $value, $message, $status);
+		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
 	}
 
 	/**
@@ -197,6 +219,7 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 	 */
 	protected function isOnline($url) {
 		$url = @parse_url($url);
+
 		if (!$url) {
 			return FALSE;
 		}
@@ -223,8 +246,8 @@ class CheckFrontendStatus implements \TYPO3\CMS\Reports\StatusProviderInterface 
 			} else {
 				return FALSE;
 			}
-		} else {
-			return FALSE;
 		}
+
+		return FALSE;
 	}
 }
