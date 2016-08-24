@@ -5,7 +5,7 @@ namespace TYPO3\FrontendStatus\Report;
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2011-2015 Felix Nagel <info@felixnagel.com>
+*  (c) 2011-2016 Felix Nagel <info@felixnagel.com>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -131,10 +131,9 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
         $title = 'Header Check';
         $message = '';
         $status = Status::OK;
+        $value = 'Ok';
 
-        if ($this->isOnline(GeneralUtility::getIndpEnv('TYPO3_SITE_URL'))) {
-            $value = 'Ok';
-        } else {
+        if (!$this->isOnline(GeneralUtility::getIndpEnv('TYPO3_SITE_URL'))) {
             $value = 'Error';
             $message = 'Status header sent was not "200 Ok"';
             $status = Status::ERROR;
@@ -153,14 +152,13 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
         $title = 'Error display';
         $message = '';
         $status = Status::OK;
+        $value = 'Enabled';
 
         // 0 = none, 1 = all, 2 = if IP matches
         if ($GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] == '1') {
-            $value = 'Enabled';
             $message = 'Errors will be displayed as displayErrors is configured to show all errors.';
             $status = Status::ERROR;
         } elseif ($GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] == '2') {
-            $value = 'Enabled';
             $message = 'Errors might be displayed when client IP matches devIPmask.';
             $status = Status::NOTICE;
         } else {
@@ -180,13 +178,13 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
         $title = 'Dev IP mask';
         $message = '';
         $status = Status::OK;
-        $devIpMmask = $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'];
+        $devIpMask = $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'];
 
-        if ($devIpMmask == '*') {
+        if ($devIpMask === '*') {
             $value = 'Matches all';
             $message = 'devIPmask matches all IP addresses.';
             $status = Status::ERROR;
-        } elseif (preg_match('#\*#', $devIpMmask)) {
+        } elseif (preg_match('#\*#', $devIpMask)) {
             $value = 'Wildcard included';
             $message = 'devIPmask includes at least one catch all wildcard.';
             $status = Status::NOTICE;
