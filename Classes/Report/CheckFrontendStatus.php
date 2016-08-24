@@ -112,7 +112,7 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
 
 		$message .= ' Current context is "' . (string) $applicationContext . '"';
 
-		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
+		return $this->createStatusReport($title, $value, $message, $status);
 	}
 
 	/**
@@ -133,7 +133,7 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
 			$status = Status::ERROR;
 		}
 
-		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
+		return $this->createStatusReport($title, $value, $message, $status);
 	}
 
 	/**
@@ -159,7 +159,7 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
 			$value = 'Disabled';
 		}
 
-		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
+		return $this->createStatusReport($title, $value, $message, $status);
 	}
 
 	/**
@@ -185,7 +185,7 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
 			$value = 'Ok';
 		}
 
-		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
+		return $this->createStatusReport($title, $value, $message, $status);
 	}
 
 	/**
@@ -206,7 +206,7 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
 			$value = 'Disabled';
 		}
 
-		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
+		return $this->createStatusReport($title, $value, $message, $status);
 	}
 
 	/**
@@ -249,5 +249,17 @@ class CheckFrontendStatus implements StatusProviderInterface, ExtendedStatusProv
 		}
 
 		return FALSE;
+	}
+
+	/**
+	 * @param string $title
+	 * @param string $value
+	 * @param string $message
+	 * @param int $status
+	 *
+	 * @return \TYPO3\CMS\Reports\Status
+	 */
+	protected function createStatusReport($title, $value, $message, $status) {
+		return GeneralUtility::makeInstance('TYPO3\\CMS\\Reports\\Status', $title, $value, $message, $status);
 	}
 }
