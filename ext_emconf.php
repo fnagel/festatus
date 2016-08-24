@@ -11,23 +11,23 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'FE Status report',
-	'description' => 'Add some frontend related checks to the reports module: check multiple TYPO3 conf vars and test frontend status. Email reports via default scheduler task.',
-	'category' => 'misc',
-	'version' => '1.0.1-dev',
-	'state' => 'beta',
-	'uploadfolder' => 0,
-	'createDirs' => '',
-	'clearcacheonload' => 0,
-	'author' => 'Felix Nagel',
-	'author_email' => 'info@felixnagel.com',
-	'constraints' => array(
-		'depends' => array(
-			'php' => '5.4.0-7.0.99',
-			'typo3' => '6.2.0-7.6.99',
-			'reports' => '',
-		),
-		'conflicts' => array(),
-		'suggests' => array(),
-	),
+    'title' => 'FE Status report',
+    'description' => 'Add some frontend related checks to the reports module: check multiple TYPO3 conf vars and test frontend status. Email reports via default scheduler task.',
+    'category' => 'misc',
+    'version' => '1.0.1-dev',
+    'state' => 'beta',
+    'uploadfolder' => 0,
+    'createDirs' => '',
+    'clearcacheonload' => 0,
+    'author' => 'Felix Nagel',
+    'author_email' => 'info@felixnagel.com',
+    'constraints' => array(
+        'depends' => array(
+            'php' => '5.4.0-7.0.99',
+            'typo3' => '6.2.0-7.6.99',
+            'reports' => '',
+        ),
+        'conflicts' => array(),
+        'suggests' => array(),
+    ),
 );
