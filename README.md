@@ -1,4 +1,4 @@
-# TYPO3 t3extblog
+# TYPO3 fe_status
 
 Adds a simple check to the reports module to make sure your FE is available 
 by checking FE header status and TYPO3 conf vars. 
@@ -26,8 +26,3 @@ It is possible to sponsor features and bugfixes!
 ## Donation
 
 Please consider a donation: http://www.felixnagel.com/donate/
-
-
-## ToDo
-
-* Add proper documentation
